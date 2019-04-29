@@ -3,7 +3,8 @@
 This repository contains experiments related to this blog post:
 [On Extracting Descriptors](https://starkdg.github.io/posts/concise-image-descriptor)
 
-Here's a map to the files.
+Here's a map to the files. Locations for files are located at the top of the scripts which will need
+to be changed.
 
 ## Utility Scripts
 
