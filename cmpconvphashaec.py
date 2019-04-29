@@ -18,7 +18,7 @@ parser.add_argument('--dir1', required=True,
 parser.add_argument('--dir2', required=True,
                     help="Directory containing modified images")
 
-model_file = "/home/david/Downloads/tfmodels/caenet/mobilenetv2_cae_autoenc_1792to256_combined_frozen_model.py"
+model_file = "/home/david/Downloads/tfmodels/pcanet/mobilenetv2_pca_autoenc_1792to256_combined_frozen_model.py"
 
 args = parser.parse_args()
 print("model: ", model_file)
@@ -26,10 +26,10 @@ cp = ConvPhashAutoEnc(model_file)
 
 print("process images in ", args.dir1)
 # features1 = cp.image_features(args.dir1)
-# features1 = cp.image_condensed(args.dir1)
+features1 = cp.image_condensed(args.dir1)
 # features1 = cp.image_condensed1024(args.dir1)
 # features1 = cp.image_condensed512(args.dir1)
-features1 = cp.image_condensed256(args.dir1)
+# features1 = cp.image_condensed256(args.dir1)
 # features1 = cp.image_condensed128(args.dir1)
 # features1 = cp.image_condensed64(args.dir1)
 # features1 = cp.image_condensed32(args.dir1)
@@ -42,10 +42,10 @@ print("max: ", np.amax(features1.ravel()))
 
 print("process images in ", args.dir2)
 # features2 = cp.image_features(args.dir2)
-# features2 = cp.image_condensed(args.dir2)
+features2 = cp.image_condensed(args.dir2)
 # features2 = cp.image_condensed1024(args.dir2)
 # features2 = cp.image_condensed512(args.dir2)
-features2 = cp.image_condensed256(args.dir2)
+# features2 = cp.image_condensed256(args.dir2)
 # features2 = cp.image_condensed128(args.dir2)
 # features2 = cp.image_condensed64(args.dir2)
 # features2 = cp.image_condensed32(args.dir2)
@@ -112,9 +112,10 @@ print("pct above threshold2: ", np.prod(mismarked_distances2.shape)/np.prod(inte
 nbins = 100
 plt.figure(1)
 plt.hist([inter_distances, intra_distances], bins=nbins,
-         color=['cyan', 'lime'],
+         color=['Coral', 'DarkSlateBlue'],
          density=True,
          histtype='barstacked')
+plt.legend(['similar', 'dissimilar'], loc='upper left')
 plt.xlabel("L2 Distance")
 plt.ylabel("counts")
 plt.title("Distances Between Similar/Dissimilar Image Features")

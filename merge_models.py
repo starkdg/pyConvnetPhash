@@ -8,12 +8,12 @@ image_input_width = 224
 image_input_height = 224
 image_input_channels = 3
 classification_model = "/home/david/Downloads/tfmodels/mobilenetv2/mobilenet_v2_1.4_224_frozen.pb"
-aec_model = "/home/david/Downloads/tfmodels/caenet/mobilenetv2_cae_autoenc_1792to256_frozen_model-10.pb"
-frozen_model = "/home/david/Downloads/tfmodels/caenet/mobilenetv2_cae_autoenc_1792to256_combined_frozen_model.py"
+aec_model = "/home/david/Downloads/tfmodels/pcanet/mobilenetv2_pca_autoenc_1792to256_frozen_model-sigmoid.pb"
+frozen_model = "/home/david/Downloads/tfmodels/pcanet/mobilenetv2_pca_autoenc_1792to256_combined_frozen_model.py"
 classif_input = "input:0"
 classif_feature = "MobilenetV2/Logits/AvgPool:0"
 autoenc_input = "input:0"
-autoenc_output = "output256:0"
+autoenc_output = "output:0"
 
 
 print("read model: ", classification_model)

@@ -24,10 +24,10 @@ class ConvPhashAutoEnc:
         self.img_out = self.graph.get_tensor_by_name('aec/preprocess/output:0')
         self.in_tensor = self.graph.get_tensor_by_name('aec/classifier/input:0')
         self.feature_tensor = self.graph.get_tensor_by_name('aec/classifier/feature_vector:0')
-        # self.out    = self.graph.get_tensor_by_name('aec/aec_encoder/output:0')
+        self.out    = self.graph.get_tensor_by_name('aec/aec_encoder/output:0')
         # self.out1024 = self.graph.get_tensor_by_name('aec/aec_encoder/output1024:0')
         # self.out512 = self.graph.get_tensor_by_name('aec/aec_encoder/output512:0')
-        self.out256 = self.graph.get_tensor_by_name('aec/aec_encoder/output256:0')
+        # self.out256 = self.graph.get_tensor_by_name('aec/aec_encoder/output256:0')
         # self.out128 = self.graph.get_tensor_by_name('aec/aec_encoder/output128:0')
         # self.out64 = self.graph.get_tensor_by_name('aec/aec_encoder/output64:0')
         # self.out32 = self.graph.get_tensor_by_name('aec/aec_encoder/output32:0')
@@ -74,8 +74,7 @@ class ConvPhashAutoEnc:
         concatfeatures = np.concatenate(features_list, axis=0)
         return concatfeatures
 
-    '''
-    def image_condensed1024(self, img_dir, limit=50):
+    def image_condensed(self, img_dir, limit=50):
         """ Compute condensed image perceptual hashes from features.
         args
         features -- ndarray of features (size: [no_images x 1 x 1 x 2048])
@@ -85,13 +84,14 @@ class ConvPhashAutoEnc:
         images_gen = self.process_image_files(img_dir, limit=limit)
         with self.graph.as_default():
             for np_images in images_gen:
-                features = self.sess.run(self.out1024,
+                features = self.sess.run(self.out,
                                          feed_dict={self.in_tensor: np_images})
                 features_list.append(features)
 
         concatfeatures = np.concatenate(features_list, axis=0)
         return concatfeatures
 
+    '''
     def image_condensed512(self, img_dir, limit=50):
         """ Compute condensed image perceptual hashes from features.
         args
