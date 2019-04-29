@@ -3,6 +3,11 @@
 This repository contains experiments related to this blog post:
 [On Extracting Descriptors](https://starkdg.github.io/posts/concise-image-descriptor)
 
+The basic idea is to extract a descriptor from images by taking advantage of some convolutional neural
+net models trained to do image classification tasks.  These models output a feature vector from one of
+the hidden layers. The object here is to see how far we can reduce the dimensionality of the feature
+space by training additional autoencoder layers that might functionaly piggy-back on top of these models. 
+
 Here's a map to the files. Locations for files are located at the top of the scripts which will need
 to be changed.
 
