@@ -9,8 +9,8 @@ the hidden layers. The object here is to see how far we can reduce the dimension
 space by training additional autoencoder layers that might functionally piggy-back on top of these models. 
 The code in these examples use the MobilenetV2 model but can easily be modified for other models.
 
-Here's a map to the files. Locations for files are located at the top of the scripts which will need
-to be changed.
+Here's a map to the python script files. Many refer to other files.  There are variables for the location of
+these files at the top of the scripts that will need to be changed accordingly.
 
 ## Utility Scripts
 
